@@ -77,39 +77,3 @@ The application is split into three layers:
 1. Web client in React + TypeScript, responsible for UI, search, map, charts, and user actions.
 2. Rust backend server, which exposes a REST API and orchestrates business logic.
 3. PostgreSQL database, storing forecasts, cities, countries, users, favorites, comments, reactions, and alerts.
-
-## Main flows
-
-- Dashboard: city search, autocomplete, selection, automatic prediction for the current day, add to favorites.
-- City details: weather evolution, prediction for a given date, comments and like/dislike votes.
-- Statistics: per-country and per-city statistics, historical charts, alerts and classifications.
-- Favorites: list of saved cities and their associated alerts.
-- Settings: update username and display profile data.
-
-## Server elements worth explaining in the report
-
-- the `get_city_prediction` SQL function, which combines the local average with historical data from previous years;
-- the `generate_weather_icon` function, which classifies weather conditions based on meteorological parameters;
-- the extreme weather alert trigger;
-- the comment reaction logic and anti-spam protection;
-- access control via JWT and refresh token.
-
-## How to run
-
-1. Start the backend:
-   ```bash
-   cd backend
-   cargo run
-   ```
-
-2. Start the frontend (in a separate terminal):
-   ```bash
-   cd frontend
-   npm install   # only the first time
-   npm run dev
-   ```
-
-3. Open the URL shown in the frontend terminal (default: `http://localhost:5173`).
-
-> Make sure PostgreSQL is running and the database is initialized via the migrations (run automatically by the backend). The backend requires a `.env` file in `backend/` with the database connection string and Google OAuth credentials.
-│
