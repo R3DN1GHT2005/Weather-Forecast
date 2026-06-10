@@ -1,0 +1,25 @@
+[package]
+name="Prognoza_meteo_backend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Framework
+axum="0.8.9"
+# Asincronitate (necesară pentru Axum și SQLx)
+tokio={version="1.52.1",features=["full"]}
+sqlx={version = "0.8",features = ["runtime-tokio-rustls", "tls-rustls", "postgres", "chrono"]}
+# Serializare/Deserializare JSON
+serde={version = "1.0.228",features = ["derive"]}
+serde_json="1.0.149"
+# Autentificare Google (JWT) si cereri HTTP externe
+jsonwebtoken="9.3"
+reqwest = { version = "0.12", features = ["json"] }
+# .env
+dotenvy="0.15"
+# Date calendaristice
+chrono = { version = "0.4", features = ["serde"] }
+# Comunicare backend cu frontend
+tower-http = { version = "0.5", features = ["cors"] }
+
+uuid = { version = "1.8", features = ["v4", "serde"] }
